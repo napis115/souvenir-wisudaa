@@ -1,0 +1,16 @@
+# NAMA_BRAND
+> Pembuat souvenir wisuda custom (boneka, buket, hampers, plakat) dengan pemesanan via WhatsApp 6282211221909.
+
+## Halaman Utama
+- [Paket](https://www.namadomain.com/paket.html): daftar paket, harga mulai, minimal order
+- [Tentang](https://www.namadomain.com/tentang.html): profil, kontak, lokasi
+- [Galeri](https://www.namadomain.com/galeri.html): contoh hasil pesanan
+- [Blog](https://www.namadomain.com/blog.html): panduan dan ide souvenir wisuda
+
+## Paket
+- [Paket Boneka Wisuda](https://www.namadomain.com/paket/paket-boneka-wisuda.html): Boneka berbusana toga dengan nama, tanggal, dan logo kampus.
+- [Paket Buket Wisuda](https://www.namadomain.com/paket/paket-buket-wisuda.html): Buket boneka dan bunga wisuda yang awet dan bisa disimpan.
+- [Paket Hampers Wisuda](https://www.namadomain.com/paket/paket-hampers-wisuda.html): Hampers wisuda berisi beberapa item dalam satu box eksklusif.
+- [Paket Plakat Wisuda](https://www.namadomain.com/paket/paket-plakat-wisuda.html): Plakat dan frame wisuda custom sebagai kenang-kenangan abadi.
+- [Paket Souvenir Sekolah TK/SD](https://www.namadomain.com/paket/paket-souvenir-sekolah-tk-sd.html): Souvenir kelulusan dan perpisahan yang lucu dan aman untuk anak TK/SD.
+- [Paket Grosir Kampus & Panitia](https://www.namadomain.com/paket/paket-grosir-kampus-panitia.html): Souvenir massal untuk panitia wisuda, kampus, dan instansi dengan harga grosir.

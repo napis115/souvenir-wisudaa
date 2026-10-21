@@ -1,0 +1,1 @@
+document.addEventListener('click',function(e){var a=e.target.closest('[data-wa-source]');if(!a)return;var p={source:a.getAttribute('data-wa-source'),page_path:location.pathname};if(window.gtag){gtag('event','click_whatsapp',p);}else if(window.dataLayer){window.dataLayer.push(Object.assign({event:'click_whatsapp'},p));}});

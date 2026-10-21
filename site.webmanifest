@@ -1,0 +1,21 @@
+{
+  "name": "NAMA_BRAND",
+  "short_name": "NAMA_BRAND",
+  "lang": "id",
+  "start_url": "/index.html",
+  "display": "browser",
+  "background_color": "#0B0B0C",
+  "theme_color": "#0B0B0C",
+  "icons": [
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

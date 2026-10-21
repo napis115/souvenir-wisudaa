@@ -1,0 +1,292 @@
+Saya paham masalahnya. Di screenshot terbaru, gambarnya terlihat "nge-zoom" dan terpotong (seperti bagian atas buku atau pinggir kotak yang hilang). 
+
+Ini terjadi karena `object-fit: cover;` yang kita gunakan sebelumnya **memaksa gambar memenuhi kotak**. Jika gambar aslinya tidak persis persegi, sisi pinggirnya akan dipotong.
+
+Solusinya, kita harus mengembalikan ke `object-fit: contain;` agar **gambar tampil 100% utuh tanpa terpotong sama sekali**. Agar terlihat rapi dan tidak ada "ruang kosong aneh", kita akan membuat kotak latar belakangnya sedikit lebih gelap dari card dan menambahkan sedikit padding (bingkai).
+
+Silakan ganti **hanya bagian CSS `.card-wd img`** di file `custom.css` kamu menjadi seperti ini:
+
+```css
+/* Perbaikan Gambar di dalam Card */
+.card-wd img { 
+  aspect-ratio: 4 / 3; /* Kotak landscape standar */
+  object-fit: contain; /* Gambar tampil UTUH tanpa terpotong */
+  object-position: center; 
+  width: 100%; 
+  background-color: #161618; /* Latar gelap khusus area gambar */
+  padding: 1rem; /* Memberi jarak agar gambar tidak menempel di garis card */
+  display: block; 
+  transition: transform .3s ease;
+}
+
+.card-wd:hover img { 
+  transform: scale(1.02); /* Zoom sangat halus saat di-hover */
+}
+```
+
+**Atau, jika kamu ingin menimpa seluruh isi file `custom.css` kamu agar bersih dari sisa-sisa kode lama**, silakan *copy-paste* kode lengkap di bawah ini:
+
+```css
+:root,
+[data-bs-theme="dark"] {
+  --wd-black: #0B0B0C;
+  --wd-surface: #141416;
+  --wd-surface-2: #1C1C1F;
+  --wd-border: #2A2A2E;
+  --wd-gold: #C9A24B;
+  --wd-gold-light: #E3C373;
+  --wd-gold-dark: #9C7A2F;
+  --wd-text: #F4F1EA;
+  --wd-text-muted: #A9A59B;
+  --wd-wa: #25D366;
+  --wd-wa-dark: #1EBE5A;
+
+  --bs-body-bg: var(--wd-black);
+  --bs-body-color: var(--wd-text);
+  --bs-body-font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.65;
+  --bs-heading-color: var(--wd-text);
+  --bs-border-color: var(--wd-border);
+  --bs-link-color: var(--wd-gold);
+  --bs-link-hover-color: var(--wd-gold-light);
+  --bs-secondary-color: var(--wd-text-muted);
+  --bs-tertiary-bg: var(--wd-surface);
+  --bs-border-radius: 14px;
+}
+
+body { background: var(--wd-black); }
+
+h1, h2, h3, .display-font {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+h1 { font-size: clamp(2rem, 4vw + 1rem, 3.5rem); line-height: 1.15; }
+h2 { font-size: clamp(1.6rem, 2.5vw + 1rem, 2.5rem); line-height: 1.2; }
+h3 { font-size: clamp(1.25rem, 1.5vw + 1rem, 1.75rem); line-height: 1.3; }
+
+.section { padding-block: 3.5rem; }
+@media (min-width: 992px) { .section { padding-block: 5rem; } }
+.section-alt { background: var(--wd-surface); }
+
+.eyebrow {
+  color: var(--wd-gold);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.title-rule::after {
+  content: "";
+  display: block;
+  width: 56px; height: 2px;
+  margin-top: .75rem;
+  background: var(--wd-gold);
+}
+
+/* Fokus aksesibel */
+:focus-visible { outline: 3px solid var(--wd-gold-light); outline-offset: 2px; }
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--wd-gold); color: #000; padding: .75rem 1rem; z-index: 2000;
+}
+.skip-link:focus { left: 0; }
+
+/* Tombol */
+.btn { border-radius: 999px; font-weight: 600; padding: .7rem 1.5rem; min-height: 44px; }
+.btn-gold {
+  --bs-btn-color: #0B0B0C; --bs-btn-bg: var(--wd-gold); --bs-btn-border-color: var(--wd-gold);
+  --bs-btn-hover-color: #0B0B0C; --bs-btn-hover-bg: var(--wd-gold-light); --bs-btn-hover-border-color: var(--wd-gold-light);
+  --bs-btn-active-bg: var(--wd-gold-dark); --bs-btn-active-border-color: var(--wd-gold-dark);
+}
+.btn-outline-gold {
+  --bs-btn-color: var(--wd-gold); --bs-btn-border-color: var(--wd-gold);
+  --bs-btn-hover-color: #0B0B0C; --bs-btn-hover-bg: var(--wd-gold); --bs-btn-hover-border-color: var(--wd-gold);
+}
+.btn-wa {
+  --bs-btn-color: #0B0B0C; --bs-btn-bg: var(--wd-wa); --bs-btn-border-color: var(--wd-wa);
+  --bs-btn-hover-color: #0B0B0C; --bs-btn-hover-bg: var(--wd-wa-dark); --bs-btn-hover-border-color: var(--wd-wa-dark);
+}
+
+/* Navbar */
+.navbar-wd {
+  background: rgba(11,11,12,.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--wd-border);
+}
+.navbar-wd .nav-link { color: var(--wd-text); font-weight: 500; padding-inline: 1rem; }
+.navbar-wd .nav-link:hover,
+.navbar-wd .nav-link.active,
+.navbar-wd .nav-link[aria-current="page"] { color: var(--wd-gold); }
+.navbar-wd .dropdown-menu {
+  background: var(--wd-surface); border: 1px solid var(--wd-border);
+  border-radius: 14px; padding: .5rem; box-shadow: 0 16px 40px rgba(0,0,0,.55);
+}
+.navbar-wd .dropdown-item { color: var(--wd-text); border-radius: 8px; padding: .55rem .9rem; }
+.navbar-wd .dropdown-item:hover,
+.navbar-wd .dropdown-item:focus { background: var(--wd-surface-2); color: var(--wd-gold); }
+@media (min-width: 992px) {
+  .navbar-wd .dropdown:hover > .dropdown-menu { display: block; }
+}
+
+/* =========================================
+   KARTU (CARD) PAKET - GAMBAR FULL & UTUH
+   ========================================= */
+.card-wd {
+  background: var(--wd-surface); 
+  border: 1px solid var(--wd-border);
+  border-radius: 14px; 
+  overflow: hidden; 
+  height: 100%;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card-wd:hover { 
+  transform: translateY(-4px); 
+  border-color: var(--wd-gold); 
+  box-shadow: 0 12px 32px rgba(201,162,75,.18); 
+}
+
+/* Perbaikan Gambar: Utuh (contain) + Bingkai */
+.card-wd img { 
+  aspect-ratio: 4 / 3; 
+  object-fit: contain; /* Kunci agar gambar TIDAK nge-zoom/terpotong */
+  object-position: center; 
+  width: 100%; 
+  background-color: #161618; /* Latar belakang gelap untuk area sisa */
+  padding: 1rem; /* Jarak aman (bingkai) */
+  display: block; 
+  transition: transform .3s ease;
+}
+.card-wd:hover img { 
+  transform: scale(1.02); 
+}
+
+.badge-gold { 
+  background: var(--wd-gold); 
+  color: #0B0B0C; 
+  font-weight: 600; 
+  border-radius: 999px; 
+  padding: .35em .65em;
+  display: inline-block;
+}
+.price { 
+  color: var(--wd-gold-light); 
+  font-weight: 700; 
+  font-size: 1.15rem; 
+}
+
+/* ========================================= */
+
+/* Tabel */
+.table-wd { --bs-table-bg: transparent; --bs-table-color: var(--wd-text); --bs-table-border-color: var(--wd-border); --bs-table-striped-bg: var(--wd-surface-2); }
+.table-wd thead th { color: var(--wd-gold); border-bottom: 2px solid var(--wd-gold); font-weight: 600; }
+
+/* FAQ (tanpa JS) */
+.faq details { background: var(--wd-surface); border: 1px solid var(--wd-border); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: .75rem; }
+.faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--wd-gold); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details[open] { border-color: var(--wd-gold); }
+
+/* Breadcrumb */
+.breadcrumb { --bs-breadcrumb-divider-color: var(--wd-text-muted); --bs-breadcrumb-item-active-color: var(--wd-text-muted); font-size: .9rem; }
+
+/* WhatsApp melayang */
+.wa-float {
+  position: fixed; right: 16px; bottom: 16px; z-index: 1040;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--wd-wa); color: #0B0B0C;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+}
+.wa-float:hover { background: var(--wd-wa-dark); }
+
+/* Galeri */
+.gallery-grid { display: grid; gap: .75rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 768px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+.gallery-grid a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--wd-border); }
+.gallery-grid img { aspect-ratio: 1/1; object-fit: cover; width: 100%; transition: transform .35s ease; }
+.gallery-grid a:hover img { transform: scale(1.05); }
+
+/* Lightbox CSS-only */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,.92); place-items: center; padding: 1rem; }
+.lightbox:target { display: grid; }
+.lightbox img { max-height: 85vh; max-width: 100%; border-radius: 12px; }
+.lightbox .close { position: absolute; top: 1rem; right: 1.25rem; font-size: 2rem; color: var(--wd-text); text-decoration: none; }
+
+/* Hero (Dasar) */
+.hero {
+  position: relative; 
+  display: grid; 
+  align-items: center;
+}
+.text-gold-gradient {
+  background: linear-gradient(90deg, var(--wd-gold), var(--wd-gold-light));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ---- tambahan implementasi ---- */
+.answer-block{border-left:3px solid var(--wd-gold);padding-left:1rem;color:var(--wd-text);margin-bottom:1.5rem}
+.tldr{background:var(--wd-surface);border:1px solid var(--wd-gold);border-radius:14px;padding:1rem 1.25rem}
+.prose{max-width:70ch}.prose h2{margin-top:2.25rem}.prose p,.prose li{font-size:1.05rem}
+.num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--wd-gold);color:#0B0B0C;font-weight:700}
+.icon-box{background:var(--wd-surface);border:1px solid var(--wd-border);border-radius:14px;padding:1.25rem;height:100%}
+.footer-wd{background:var(--wd-surface);border-top:1px solid var(--wd-gold)}
+.footer-wd a{color:var(--wd-text-muted);text-decoration:none}.footer-wd a:hover{color:var(--wd-gold)}
+.pill{border:1px solid var(--wd-border);border-radius:999px;padding:.35rem .9rem;color:var(--wd-text);text-decoration:none;display:inline-block;margin:0 .35rem .5rem 0}
+.pill:hover{border-color:var(--wd-gold);color:var(--wd-gold)}
+.sticky-side{position:sticky;top:90px}
+.cta-bar{display:none}
+@media(max-width:991.98px){
+ .has-cta-bar{padding-bottom:78px}.has-cta-bar .wa-float{display:none}
+ .cta-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:1040;background:rgba(11,11,12,.96);border-top:1px solid var(--wd-gold);padding:.75rem 1rem}
+ .cta-bar .btn{width:100%}
+}
+.lightbox .nav-l,.lightbox .nav-r{position:absolute;top:50%;font-size:2.5rem;color:var(--wd-text);text-decoration:none;padding:0 1rem}
+.lightbox .nav-l{left:.5rem}.lightbox .nav-r{right:.5rem}
+.card-wd .stretched a{color:inherit}
+
+/* Hero Full Background */
+.hero-full {
+  position: relative;
+  min-height: 100vh;               
+  display: flex;
+  align-items: center;
+  padding-block: 4rem;
+  background-image: url("../img/hero.webp");   
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* Overlay gelap supaya teks terbaca */
+.hero-full .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 11, 12, 0.92) 0%,
+    rgba(11, 11, 12, 0.75) 45%,
+    rgba(11, 11, 12, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.hero-full .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hilangkan efek bayangan/border dari rule hero lama */
+.hero-full img { border: 0; box-shadow: none; }
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+```
