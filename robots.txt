@@ -1,23 +1,57 @@
+# ==============================================================================
+# Robots.txt — Hampersku Corporate Hampers (https://www.souvenirwisuda.web.id)
+# Standar SEO & AEO Terbaru (Googlebot, Bingbot, Google Images & AI Crawlers)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. ATURAN UTAMA SEARCH ENGINE (Googlebot, Bingbot, & Semua Web Crawler)
+# ------------------------------------------------------------------------------
 User-agent: *
 Allow: /
-Disallow: /404.html
 
-# Crawler AI pencarian (diizinkan)
-User-agent: OAI-SearchBot
+# Pastikan halaman katalog, produk, dan portofolio dapat dirayapi penuh
+Allow: /paket
+Allow: /paket/
+Allow: /portofolio
+Allow: /portofolio/
+Allow: /blog
+Allow: /blog/
+Allow: /tentang
+Allow: /kontak
+Allow: /kebijakan-privasi
+Allow: /favicon.ico
+
+# Pastikan resource rendering (CSS, JS, Font, Gambar) bebas diakses Googlebot
+Allow: /assets/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Cegah pengindeksan file dokumentasi & skrip internal pengembang
+Disallow: /*.md$
+Disallow: /server.js
+Disallow: /.git/
+
+# ------------------------------------------------------------------------------
+# 2. GOOGLEBOT-IMAGE (Optimasi Katalog Gambar & Foto Produk Hampers)
+# ------------------------------------------------------------------------------
+User-agent: Googlebot-Image
 Allow: /
+Allow: /assets/images/
+
+# ------------------------------------------------------------------------------
+# 3. AI & ANSWER ENGINE CRAWLERS (AEO & GEO Optimization)
+# Mengizinkan bot mesin pencari AI merayapi konten untuk kutipan & ringkasan resmi
+# ------------------------------------------------------------------------------
+User-agent: GPTBot
 User-agent: ChatGPT-User
-Allow: /
 User-agent: PerplexityBot
-Allow: /
-User-agent: Claude-SearchBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot
 Allow: /
 
-# Opsional: blokir pelatihan model (hapus tanda # untuk mengaktifkan)
-# User-agent: GPTBot
-# Disallow: /
-# User-agent: Google-Extended
-# Disallow: /
-# User-agent: ClaudeBot
-# Disallow: /
-
-Sitemap: https://www.namadomain.com/sitemap.xml
+# ------------------------------------------------------------------------------
+# 4. SITEMAP RESMI
+# ------------------------------------------------------------------------------
+Sitemap: https://www.souvenirwisuda.web.id/sitemap.xml
