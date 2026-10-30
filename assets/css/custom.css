@@ -380,7 +380,7 @@ img.brand-logo {
   border-radius: 18px;
   overflow: hidden;
   position: relative;
-  background: #F8FAFC;
+  background: #FFFFFF;
   aspect-ratio: 4 / 3;
 }
 
@@ -589,7 +589,7 @@ img.brand-logo {
 .card-img-wrap {
   position: relative;
   overflow: hidden;
-  background: #F8FAFC;
+  background: #FFFFFF;
   aspect-ratio: 4 / 3;
 }
 .card-wd img {
