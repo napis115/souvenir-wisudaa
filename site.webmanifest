@@ -1,11 +1,11 @@
 {
-  "name": "NAMA_BRAND",
-  "short_name": "NAMA_BRAND",
+  "name": "Souvenir Wisuda",
+  "short_name": "Souvenir Wisuda",
   "lang": "id",
   "start_url": "/index.html",
   "display": "browser",
-  "background_color": "#0B0B0C",
-  "theme_color": "#0B0B0C",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0284C7",
   "icons": [
     {
       "src": "/assets/img/apple-touch-icon.png",
