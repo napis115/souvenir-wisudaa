@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Redirect /index.html and /index to /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(index|index\.html)[\s?] [NC]
+  RewriteRule ^(index|index\.html)?$ / [R=301,L]
+
+  # 2. Redirect *.html to clean URL (strip .html)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html[\s?] [NC]
+  RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+  # 3. Rewrite clean URL back to .html internally
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
