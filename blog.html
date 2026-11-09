@@ -48,15 +48,15 @@
 
     <!-- Category Filter Pills -->
     <div class="d-flex flex-wrap gap-2 mb-4">
-        <span class="pill active">Semua</span>
-        <span class="pill">Ide</span>
-        <span class="pill">Tips</span>
-        <span class="pill">Panduan Harga</span>
-        <span class="pill">Panitia</span>
+        <span class="pill active" data-filter="semua">Semua</span>
+        <span class="pill" data-filter="ide">Ide</span>
+        <span class="pill" data-filter="tips">Tips</span>
+        <span class="pill" data-filter="panduan-harga">Panduan Harga</span>
+        <span class="pill" data-filter="panitia">Panitia</span>
     </div>
 
     <!-- Featured Post (Artikel Pilihan): Horizontal Card dengan Harga di Sebelah Gambar -->
-    <article class="card-wd mb-4" style="border: 1.5px solid #BAE6FD !important; border-radius: 20px; overflow: hidden; background: #FFFFFF;">
+    <article class="card-wd mb-4 blog-item" data-category="ide" style="border: 1.5px solid #BAE6FD !important; border-radius: 20px; overflow: hidden; background: #FFFFFF;">
         <div class="row g-0 align-items-stretch">
             <div class="col-lg-6 position-relative">
                 <a href="/blog/ide-souvenir-wisuda-murah-berkesan" class="d-block">
@@ -104,7 +104,7 @@
     <!-- Grid Artikel 2 Kolom: Gambar di Kiri, Harga & Deskripsi di Sebelah Gambar -->
     <div class="row g-4">
         <!-- Artikel 1 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="tips">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -133,7 +133,7 @@
         </div>
 
         <!-- Artikel 2 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="panduan-harga">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -162,7 +162,7 @@
         </div>
 
         <!-- Artikel 3 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="panitia">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -191,7 +191,7 @@
         </div>
 
         <!-- Artikel 4 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="ide">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -220,7 +220,7 @@
         </div>
 
         <!-- Artikel 5 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="tips">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -249,7 +249,7 @@
         </div>
 
         <!-- Artikel 6 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="ide">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -278,7 +278,7 @@
         </div>
 
         <!-- Artikel 7 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="tips">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -307,7 +307,7 @@
         </div>
 
         <!-- Artikel 8 -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 blog-item" data-category="ide">
             <article class="card-wd h-100" style="border: 1px solid #E2E8F0 !important; border-radius: 16px; overflow: hidden; background: #FFFFFF;">
                 <div class="row g-0 h-100 align-items-stretch">
                     <div class="col-sm-5 position-relative">
@@ -353,5 +353,31 @@
 
 <script src="assets/js/bootstrap.bundle.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var pills = document.querySelectorAll('.pill[data-filter]');
+    var items = document.querySelectorAll('.blog-item');
+    
+    pills.forEach(function(pill) {
+        pill.style.cursor = 'pointer';
+        pill.addEventListener('click', function() {
+            // Remove active from all pills
+            pills.forEach(function(p) { p.classList.remove('active'); });
+            // Add active to clicked pill
+            this.classList.add('active');
+            
+            var filter = this.getAttribute('data-filter');
+            
+            items.forEach(function(item) {
+                if (filter === 'semua' || item.getAttribute('data-category') === filter) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
 </body>
 </html>
