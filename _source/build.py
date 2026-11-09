@@ -411,8 +411,9 @@ for p in PACKAGES:
         f'<h2 class="mt-4 h3">Cocok Untuk</h2>{ul(p["cocok"])}'
         f'<h2 class="mt-4 h3">Cara Pesan</h2><ol><li>Chat WhatsApp dan sampaikan kebutuhan.</li><li>Pilih paket dan konfirmasi desain.</li><li>Lakukan DP, produksi dimulai.</li><li>Pelunasan, pesanan dikemas dan dikirim.</li></ol>'
         f'<h2 class="mt-4 h3">Estimasi &amp; Kebijakan</h2><p>Estimasi pengerjaan {E(p["dur"])}. Revisi desain dilakukan sebelum produksi. Ketentuan lengkap ada di <a href="../syarat-ketentuan.html">Syarat &amp; Ketentuan</a>.</p>'
-        '</div><div class="col-lg-5"><div class="sticky-side icon-box">'
-        f'<span class="badge badge-gold mb-2">{E(p["label"])}</span><p class="price fs-4 mb-1">Mulai Rp{PRICE}</p><p class="text-secondary mb-1">Min. order: {E(p["moq"])}</p><p class="text-secondary">Pengerjaan: {E(p["dur"])}</p>'
+        '</div><div class="col-lg-5"><div class="sticky-side">'
+        f'<span class="badge badge-gold mb-2">{E(p["label"])}</span><p class="price fs-3 mb-1">Mulai Rp{PRICE} <span class="fs-6 fw-normal text-secondary">/ pcs</span></p>'
+        f'<p class="text-secondary small mb-1">✓ Min. order: {E(p["moq"])} (Bisa Satuan)</p><p class="text-secondary small mb-3">✓ Estimasi pengerjaan: {E(p["dur"])}</p>'
         f'{wa_btn(msg, "detail-"+p["slug"], "Pesan via WhatsApp", "btn btn-wa btn-lg w-100")}</div></div></div>')
     body += "<!-- TESTIMONI paket: tambahkan testimoni asli pelanggan di sini. -->\n"
     body += section(heading("FAQ", f"FAQ {p['name']}") + faq_html(pf), alt=True)
