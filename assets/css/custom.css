@@ -304,15 +304,25 @@ h3 {
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #0F172A;
+  color: #000000;
 }
 .navbar-brand span {
-  background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 50%, #38BDF8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #0284C7;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: #000000;
+  color: #000000;
   font-weight: 700;
+}
+.navbar-brand.text-gold-gradient,
+.navbar-brand.text-gold-gradient span,
+.navbar-brand.text-blue-gradient,
+.navbar-brand.text-blue-gradient span {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #000000 !important;
+  color: #000000 !important;
 }
 
 /* Brand Logo (Circular, Clean & Tidy) */
