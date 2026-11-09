@@ -1300,3 +1300,18 @@ footer p.display-font span,
   -webkit-text-fill-color: #000000 !important;
   color: #000000 !important;
 }
+
+/* Blog Card Images - Tampil Penuh & Utuh Tanpa Terpotong */
+.blog-item .card-wd img,
+.blog-item img,
+article.blog-item img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #FFFFFF !important;
+}
+.blog-item .card-wd:hover img,
+article.blog-item:hover img {
+  transform: scale(1.03) !important;
+}
