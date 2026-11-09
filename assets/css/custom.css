@@ -1277,3 +1277,26 @@ img.brand-logo {
     scroll-behavior: auto !important;
   }
 }
+
+/* Footer Brand Logo Text - Pure Black matching Navbar */
+.footer-wd .navbar-brand,
+.footer-wd .navbar-brand span,
+.footer-wd p.display-font,
+.footer-wd p.display-font span,
+.footer-wd .text-gold-gradient,
+.footer-wd .text-gold-gradient span,
+footer .navbar-brand,
+footer .navbar-brand span,
+footer p.display-font,
+footer p.display-font span,
+.footer-brand,
+.footer-brand span {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #000000 !important;
+  color: #000000 !important;
+}
